@@ -1,0 +1,39 @@
+﻿@page
+@model WebApp.Pages.Credit.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Logic.Id" />
+    <div class="row">
+        <div class="col-md-4 m-1 p-1">
+            <label asp-for="Logic.Value" class="control-label"></label>
+            <input asp-for="Logic.Value" class="form-control" max="5" min="1" />
+            <span class="text-danger" asp-validation-for="Logic.Value"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 m-1 p-1">
+            <div class="form-check">
+                <label class="form-check-label" asp-for="Logic.Success"></label>
+                <input class="form-check-input" asp-for="Logic.Success" type="checkbox">
+                <span class="text-danger" asp-validation-for="Logic.Success"></span>
+            </div>
+        </div>
+    </div>
+    <br />
+    <input type="submit" value="Save" class="btn btn-primary" />
+    <a class="btn btn-outline-secondary" asp-page="./Index">Cancel</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

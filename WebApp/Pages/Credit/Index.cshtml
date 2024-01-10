@@ -1,0 +1,48 @@
+﻿@page
+@model WebApp.Pages.Credit.IndexModel
+
+@{
+    ViewData["Title"] = "All Credits";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+<a class="btn btn btn-outline-info" asp-page="Create">Create New</a>
+
+<table class="table table-bordered table-responsive-md table-sm text-center m-md-2">
+    <thead>
+        <tr>
+            <th>
+                <label asp-for="Logic[0].Created"></label>
+            </th>
+            <th>
+                <label asp-for="Logic[0].Value"></label>
+            </th>
+            <th>
+                <label asp-for="Logic[0].Success"></label>
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Logic)
+        {
+            <tr>
+                <td>
+                    @item.Created
+                </td>
+                <td>
+                    @item.Value
+                </td>
+                <td>
+                    @item.Success
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-outline-warning" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn btn-sm btn-outline-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
